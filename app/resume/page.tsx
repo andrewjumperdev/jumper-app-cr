@@ -25,9 +25,9 @@ const Resume = () => {
       <section className="mb-12">
         <h3 className="text-3xl font-semibold text-gray-800">À propos de moi</h3>
         <p className="mt-4 text-lg text-gray-700">
-          Développeur web avec plus de 4 ans d’expérience, spécialisé en React, Next.Js, Node.Js et Firebase. J'ai une passion
-          pour le développement d'applications web responsive et performantes offrant une expérience utilisateur fluide et sécurisée.
-          Analytique et méthodique, je m'assure que chaque projet atteint son plein potentiel.
+          Développeur web avec plus de 4 ans d&apos;expérience, spécialisé en React, Next.Js, Node.Js et Firebase. J&apos;ai une passion
+          pour le développement d&apos;applications web responsive et performantes offrant une expérience utilisateur fluide et sécurisée.
+          Analytique et méthodique, je m&apos;assure que chaque projet atteint son plein potentiel.
         </p>
       </section>
 
@@ -39,8 +39,8 @@ const Resume = () => {
           <h4 className="text-2xl font-semibold text-gray-800">Développeur Full Stack - Bobochic, Paris</h4>
           <p className="text-gray-600">Juillet 2022 - Septembre 2023</p>
           <ul className="mt-4 list-disc pl-5 text-lg text-gray-700">
-            <li>Développement d'un web scraper avancé pour collecter et analyser des données depuis PRESTASHOP.</li>
-            <li>Automatisation des processus d'intégration des données produits avec NODE.JS.</li>
+            <li>Développement d&apos;un web scraper avancé pour collecter et analyser des données depuis PRESTASHOP.</li>
+            <li>Automatisation des processus d&apos;intégration des données produits avec NODE.JS.</li>
             <li>Création de scripts PYTHON pour automatiser les tâches répétitives.</li>
           </ul>
         </div>
@@ -49,7 +49,7 @@ const Resume = () => {
           <h4 className="text-2xl font-semibold text-gray-800">Développeur Frontend & Backend - Wanhao, Paris</h4>
           <p className="text-gray-600">Octobre 2023 - Septembre 2024</p>
           <ul className="mt-4 list-disc pl-5 text-lg text-gray-700">
-            <li>Développement et déploiement de 'Yumi Sync Service' pour la synchronisation des modifications de fichiers.</li>
+            <li>Développement et déploiement de &apos;Yumi Sync Service&apos; pour la synchronisation des modifications de fichiers.</li>
             <li>Migration et modernisation du site web avec une version responsive.</li>
             <li>Contribution au projet open source Yumi Lab.</li>
           </ul>
@@ -59,7 +59,7 @@ const Resume = () => {
           <h4 className="text-2xl font-semibold text-gray-800">Lead Developer Frontend - Samanjo, Paris</h4>
           <p className="text-gray-600">Octobre 2024 - Février 2025</p>
           <ul className="mt-4 list-disc pl-5 text-lg text-gray-700">
-            <li>Conception et développement d'une application web e-commerce B2B avec REACT et NEXT.JS.</li>
+            <li>Conception et développement d&apos;une application web e-commerce B2B avec REACT et NEXT.JS.</li>
             <li>Optimisation UX/UI avec CHART.JS et SWIPER.JS.</li>
             <li>Sécurisation des accès utilisateurs avec Firebase et API NEXT.JS.</li>
           </ul>
@@ -69,7 +69,7 @@ const Resume = () => {
           <h4 className="text-2xl font-semibold text-gray-800">Développeur Frontend - Antit, Costa Rica</h4>
           <p className="text-gray-600">Septembre 2020 - Mai 2022</p>
           <ul className="mt-4 list-disc pl-5 text-lg text-gray-700">
-            <li>Développement frontend pour divers projets en React et d'autres technologies web modernes.</li>
+            <li>Développement frontend pour divers projets en React et d&apos;autres technologies web modernes.</li>
           </ul>
         </div>
       </section>

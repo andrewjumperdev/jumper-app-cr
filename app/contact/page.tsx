@@ -29,7 +29,6 @@ const Contact = () => {
     e.preventDefault();
     setFormStatus("submitting");
 
-    // Aquí puedes usar la API de Next.js para enviar los datos al backend
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -41,11 +40,11 @@ const Contact = () => {
 
       if (response.ok) {
         setFormStatus("success");
-        setFormData({ name: "", email: "", phone: "", message: "" }); 
+        setFormData({ name: "", email: "", phone: "", message: "" });
       } else {
         setFormStatus("error");
       }
-    } catch (error) {
+    } catch {
       setFormStatus("error");
     }
   };

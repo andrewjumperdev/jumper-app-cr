@@ -15,7 +15,7 @@ const Projects = () => {
           🚀 Mes Projets
         </h1>
         <p className="text-lg mb-12 text-white opacity-80">
-          Découvrez quelques-uns de mes projets les plus passionnants. Chaque projet a été conçu et développé avec attention à l'expérience utilisateur et à la performance.
+          Découvrez quelques-uns de mes projets les plus passionnants. Chaque projet a été conçu et développé avec attention à l&apos;expérience utilisateur et à la performance.
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

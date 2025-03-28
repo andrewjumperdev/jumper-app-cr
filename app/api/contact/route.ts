@@ -29,8 +29,12 @@ export async function POST(req: Request) {
     console.log("✅ Mensaje guardado en la base de datos", result);
 
     return NextResponse.json({ message: "Mensaje guardado" }, { status: 200 });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    let errorMessage = "Error en el servidor";
+    if (error instanceof Error) {
+      errorMessage = error.message;
+    }
     console.error("❌ Error en el servidor:", error);
-    return NextResponse.json({ error: error.message || "Error en el servidor" }, { status: 500 });
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

@@ -1,19 +1,25 @@
+/* eslint-disable no-var */
+declare global {
+  var _mongoClientPromise: Promise<MongoClient> | undefined;
+}
+/* eslint-enable no-var */
+
 import { MongoClient } from "mongodb";
 
 const uri = process.env.MONGODB_URI;
 if (!uri) throw new Error("⚠️ No se encontró MONGODB_URI en .env.local");
 
 const options = {};
-let client;
+let client: MongoClient;
 let clientPromise: Promise<MongoClient>;
 
 if (process.env.NODE_ENV === "development") {
-  if (!(global as any)._mongoClientPromise) {
+  if (!globalThis._mongoClientPromise) {
     console.log("📡 Conectando a MongoDB...");
     client = new MongoClient(uri, options);
-    (global as any)._mongoClientPromise = client.connect();
+    globalThis._mongoClientPromise = client.connect();
   }
-  clientPromise = (global as any)._mongoClientPromise;
+  clientPromise = globalThis._mongoClientPromise;
 } else {
   console.log("🚀 Conectando a MongoDB en producción...");
   client = new MongoClient(uri, options);
@@ -21,3 +27,4 @@ if (process.env.NODE_ENV === "development") {
 }
 
 export default clientPromise;
+
