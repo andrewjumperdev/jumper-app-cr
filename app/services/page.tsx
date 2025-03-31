@@ -30,7 +30,7 @@ const ServicesPage = () => {
       
       <p className="text-lg text-center text-gray-300 mb-8 max-w-3xl mx-auto">
         Développeur Fullstack spécialisé en Next.js, React, TypeScript, Node.js, Firebase, MongoDB et plus. 
-        J'offre des tutoriels personnalisés et un accompagnement sur vos projets.
+        J&apos;offre des tutoriels personnalisés et un accompagnement sur vos projets.
       </p>
       
       <div className="flex justify-center mb-10">
