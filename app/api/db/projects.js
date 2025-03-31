@@ -51,7 +51,7 @@ export const projects = [
                     telles que les adresses MAC des appareils et les horodatages. Il 
                     utilise des middlewares tels que multer pour la gestion des fichiers 
                     et fournit des routes pour télécharger des fichiers et gérer les requêtes.`,
-    thumbnail: "/Wanhao_LOGO.avif",
+    thumbnail: "/wanhao_LOGO.avif",
     urlProject: "https://github.com/Yumi-Lab/YUMI-ID",
     repository: "https://github.com/Yumi-Lab/YUMI-ID",
     mainTools: ["javascript", "express", "multer", "mocha", "ejs"],
@@ -62,7 +62,7 @@ export const projects = [
     img: "/img/wanhao-site.jpeg",
     title: "Site e-commerce Wanhao France",
     description: `La structure du thème Shopify est organisée en différentes dossiers et fichiers. Dans "Assets", vous trouverez des ressources telles que des images et des fichiers CSS/JS. La section "Config" stocke les paramètres généraux et des produits. "Layout" définit la disposition des éléments sur les pages. "Locales" contient des fichiers pour la localisation du site. "Sections" définit des zones de contenu réutilisables. "Snippets" stocke des fragments de code réutilisables. Enfin, "Templates" propose des modèles prédéfinis pour structurer et présenter le contenu des pages.`,
-    thumbnail: "/Wanhao_LOGO.avif",
+    thumbnail: "/img/wanhao-site.jpeg",
     urlProject: "https://wanhao-europe.com/",
     repository: "https://github.com/Wanhao-France/yumi-europe",
     mainTools: ["javascript", "html", "css", "shopify", "liquid"],
@@ -287,35 +287,36 @@ export const projects = [
     ],
   },
   {
-    id: 7,
-    title: "Bot de Traiding Automatizado",
-    img: "/img/Portada-Traiding.png",
-    description: `Este bot de traiding automatizado detecta oportunidades de entrada basadas en el análisis de tendencias del mercado, calculando puntos de ganancias y pérdidas para administrar micro cuentas con una rentabilidad esperada del 8 al 12%. Conectado a MetaTrader5, ejecuta órdenes de forma precisa y utiliza un trailing stop para minimizar pérdidas. Además, integra una base de datos que registra un diario detallado de cada operación, permitiendo un análisis técnico posterior para ajustar y perfeccionar la estrategia. Cuenta también con una interfaz frontend simple que permite al usuario loguearse, activar el bot, monitorear las operaciones en tiempo real y gestionar lotajes, abriendo la posibilidad de evolucionar hacia un sistema de copy traiding en el futuro.`,
-    thumbnail: "/img/Portada-Traiding.png",
-    urlProject: "https://github.com/andrewjumperdev/BotTraiding",
-    repository: "https://github.com/andrewjumperdev/BotTraiding",
-    mainTools: ["python", "MetaTrader5", "pandas", "numpy", "flask"],
-    technicalDetails: [
+    "id": 7,
+    "title": "Bot de Trading Automatisé",
+    "img": "/img/Portada-Traiding.png",
+    "description": "Ce bot de trading automatisé détecte les opportunités d'entrée en analysant les tendances du marché, calcule les points de gains et de pertes afin de gérer des micro-comptes avec une rentabilité attendue de 8 à 12 %. Connecté à MetaTrader5, il exécute les ordres avec précision et utilise un trailing stop pour minimiser les pertes. De plus, il intègre une base de données qui enregistre un journal détaillé de chaque opération, permettant une analyse technique approfondie pour ajuster et améliorer la stratégie. Il dispose également d'une interface frontend simple qui permet à l'utilisateur de se connecter, d'activer le bot, de surveiller les opérations en temps réel et de gérer les lots, ouvrant la possibilité d'évoluer vers un système de copy trading à l'avenir.",
+    "thumbnail": "/img/Portada-Traiding.png",
+    "urlProject": "https://github.com/andrewjumperdev/BotTraiding",
+    "repository": "https://github.com/andrewjumperdev/BotTraiding",
+    "mainTools": ["python", "MetaTrader5", "pandas", "numpy", "flask"],
+    "technicalDetails": [
       {
-        title: "Conexión con MetaTrader5",
-        description: `Utiliza la API de MetaTrader5 para conectarse al broker, enviar órdenes de compra/venta y gestionar operaciones de manera automatizada.`,
+        "title": "Connexion avec MetaTrader5",
+        "description": "Utilise l'API MetaTrader5 pour se connecter au broker, envoyer des ordres d'achat/vente et gérer les opérations de manière automatisée."
       },
       {
-        title: "Estrategia de Trading",
-        description: `Implementa una estrategia basada en el análisis de tendencias, detección de puntos de entrada y uso de trailing stop para reducir pérdidas, maximizando la rentabilidad.`,
+        "title": "Stratégie de Trading",
+        "description": "Implémente une stratégie basée sur l'analyse des tendances, la détection des points d'entrée et l'utilisation d'un trailing stop pour réduire les pertes et maximiser la rentabilité."
       },
       {
-        title: "Gestión de Micro Cuentas",
-        description: `Optimiza el manejo de micro cuentas mediante el cálculo dinámico de lotajes, logrando una rentabilidad constante entre el 8 y 12%.`,
+        "title": "Gestion des Micro-Comptes",
+        "description": "Optimise la gestion des micro-comptes grâce au calcul dynamique des lots, garantissant une rentabilité constante entre 8 et 12 %."
       },
       {
-        title: "Registro y Análisis de Operaciones",
-        description: `Integra una base de datos que guarda un diario detallado de cada operación, facilitando análisis técnicos y la implementación de ajustes en la estrategia.`,
+        "title": "Enregistrement et Analyse des Opérations",
+        "description": "Intègre une base de données qui stocke un journal détaillé de chaque opération, facilitant l'analyse technique et l'ajustement des stratégies."
       },
       {
-        title: "Interfaz Frontend",
-        description: `Cuenta con una interfaz web simple desarrollada con Flask que permite a los usuarios loguearse, activar el bot, monitorear las operaciones y ajustar parámetros operativos en tiempo real.`,
-      },
-    ],
-  },
+        "title": "Interface Frontend",
+        "description": "Dispose d'une interface web simple développée avec Flask, permettant aux utilisateurs de se connecter, d'activer le bot, de surveiller les opérations et d'ajuster les paramètres en temps réel."
+      }
+    ]
+  }
+  
 ];

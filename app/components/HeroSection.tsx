@@ -1,9 +1,17 @@
 'use client';
-
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import ProjectsModal from "./ProjectsModal";
+import { projects } from "@/app/api/db/projects";
+import { Project } from "@/app/types/";
 
 const HeroSection: React.FC = () => {
+  const [isModalOpen, setModalOpen] = useState<boolean>(false);
+
+  const importantProjects: Project[] = projects.filter(
+    (project: Project) => [0, 2, 7].includes(project.id)
+  );
+
   return (
     <section
       className="relative h-[30rem] flex items-center justify-center bg-cover bg-center"
@@ -19,8 +27,6 @@ const HeroSection: React.FC = () => {
         transition={{ duration: 1, ease: "easeOut" }}
         className="relative z-10 text-center text-white px-6 md:px-12"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent blur-3xl opacity-20"></div>
-
         <h1 className="text-4xl sm:text-6xl font-extrabold leading-tight tracking-wide mb-4">
           Je crée des expériences web incroyables 🚀
         </h1>
@@ -29,15 +35,20 @@ const HeroSection: React.FC = () => {
           <strong className="font-medium">TypeScript</strong> et{" "}
           <strong className="font-medium">React</strong>, je développe des applications modernes et évolutives.
         </p>
-        <motion.a
-          href="#projects"
+        <motion.button
+          onClick={() => setModalOpen(true)}
           className="inline-block bg-blue-600 text-lg font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-blue-700 transition-all"
           whileHover={{ scale: 1.1, boxShadow: "0px 0px 20px rgba(0, 123, 255, 0.6)" }}
           whileTap={{ scale: 0.95 }}
         >
           Explorer les projets
-        </motion.a>
+        </motion.button>
       </motion.div>
+      <ProjectsModal 
+        isOpen={isModalOpen} 
+        onClose={() => setModalOpen(false)} 
+        projects={importantProjects}
+      />
     </section>
   );
 };
