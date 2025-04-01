@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -54,7 +55,7 @@ const Contact = () => {
       <div className="w-3/4 mt-20 bg-white rounded-lg backdrop-blur-lg p-4">
         <div className="text-center mb-8">
           <div className="bg-gray-200 text-white rounded-full p-4 mb-4 inline-block">
-            <i className="bi bi-envelope text-2xl"></i>
+              <Image src={'/img/logo-jumper.png'} alt="Logo" width={80} height={80}/>
           </div>
           <h1 className="text-3xl font-extrabold">Get in touch</h1>
           <p className="text-lg text-gray-600 mb-0">

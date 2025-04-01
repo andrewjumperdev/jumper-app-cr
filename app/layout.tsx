@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import ReduxProvider from "./components/ReduxProvider";
 import Footer from "./components/Footer";
 
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://andrewcr.com"),
   title: "Andrewcr.com - Développeur Fullstack et Consultant Technologique",
   description:
-    "Bienvenue sur andrewcr.com, votre site web pour des projets de développement Fullstack et de conseil technologique. Découvrez mes services et projets personnalisés pour stimuler votre entreprise.",
+    "Bienvenue sur andrewcr.com, votre site web pour des projets de développement Fullstack et de conseil technologique.",
   openGraph: {
     title: "Andrewcr.com - Développeur Fullstack et Consultant Technologique",
     description:
-      "Explorez des solutions web personnalisées, du développement avec Next.js, et des stratégies de croissance numérique. Je suis là pour amener votre projet au niveau supérieur !",
+      "Explorez des solutions web personnalisées, du développement avec Next.js, et des stratégies de croissance numérique.",
     url: "https://andrewcr.com",
     siteName: "Andrewcr.com",
     images: [
@@ -28,7 +31,7 @@ export const metadata: Metadata = {
     title: "Andrewcr.com - Développeur Fullstack et Consultant Technologique",
     description:
       "Explorez des solutions web personnalisées, du développement avec Next.js, et des stratégies de croissance numérique.",
-      images: ['/img/icons/twitter.png'],
+    images: ["/img/icons/twitter.png"],
   },
   keywords: [
     "développeur fullstack",
@@ -40,11 +43,7 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
       <head>
@@ -54,42 +53,14 @@ export default function RootLayout({
         <meta name="robots" content="index, follow" />
         <meta name="theme-color" content="#1E293B" />
         <link rel="icon" href="/img/logo-jumper.png" />
-
-        {/* Open Graph Tags */}
-        <meta
-          property="og:title"
-          content="Andrewcr.com - Développeur Fullstack et Consultant Technologique"
-        />
-        <meta
-          property="og:description"
-          content="Explorez des solutions web personnalisées, du développement avec Next.js, et des stratégies de croissance numérique."
-        />
-        <meta property="og:url" content="https://andrewcr.com" />
-        <meta property="og:image" content="/img/logo-jumper.png" />
-        <meta property="og:type" content="website" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Andrewcr.com - Développeur Fullstack et Consultant Technologique"
-        />
-        <meta
-          name="twitter:description"
-          content="Explorez des solutions web personnalisées, du développement avec Next.js, et des stratégies de croissance numérique."
-        />
-        <meta name="twitter:image" content="/images/twitter-image.jpg" />
-
-        {/* PWA settings */}
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="apple-mobile-web-app-title" content="Andrewcr.com" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
       </head>
 
       <body className="expansion-alids-init">
         <div className="flex flex-col min-h-screen">
           <Navbar />
-          <main className="flex-grow bg-gray-900">{children}</main>
+          <ReduxProvider>
+            <main className="flex-grow bg-gray-900">{children}</main>
+          </ReduxProvider>
           <Footer />
         </div>
       </body>

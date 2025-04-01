@@ -14,7 +14,7 @@ const HeroSection: React.FC = () => {
 
   return (
     <section
-      className="relative h-[30rem] flex items-center justify-center bg-cover bg-center"
+      className="relative h-[30rem] mt-20 flex items-center justify-center bg-cover bg-center"
       style={{
         backgroundImage: "url('/img/header-img/hero-background.png')",
         backgroundAttachment: "fixed",

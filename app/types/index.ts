@@ -29,3 +29,11 @@ export interface Article {
     mainTools: string[];
     technicalDetails?: TechnicalDetail[];
   }
+
+  export type ReviewType = {
+    user: string;
+    comment: string;
+    rating: number;
+    createdAt: Date;
+  };
+  
