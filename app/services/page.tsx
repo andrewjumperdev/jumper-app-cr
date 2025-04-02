@@ -78,11 +78,11 @@ const ServicesPage = () => {
           transition={{ delay: 0.5 }}
         >
           <p className="text-xl text-center text-gray-300 mb-8 max-w-3xl mx-auto">
-            Vous êtes à la recherche d'un expert passionné pour créer des
+            Vous êtes à la recherche d&apos;un expert passionné pour créer des
             solutions de software sur mesure ? 🚀 Je suis Développeur Fullstack
             avec une expertise en{" "}
             <strong>Next.js, React, TypeScript, Node.js</strong>, et plus
-            encore. Que vous ayez un projet d'application web ou que vous ayez
+            encore. Que vous ayez un projet d&apos;application web ou que vous ayez
             besoin de formation pour vous perfectionner, je suis là pour vous
             accompagner à chaque étape.
           </p>
@@ -95,8 +95,10 @@ const ServicesPage = () => {
 
           <div className="flex justify-center mb-10">
             <Link
-              href="https://calendly.com/andrewjumperdev"
+              href="https://calendly.com/aacpariscr/tutoria"
               className="bg-blue-600 text-white font-bold px-8 py-4 rounded-lg shadow-md hover:bg-blue-700 transition-all transform hover:scale-105"
+              target="_blank"
+              rel="noopener noreferrer" 
             >
               **Réservez un cours personnalisé**
             </Link>

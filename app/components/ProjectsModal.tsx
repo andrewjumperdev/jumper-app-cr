@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Project } from '@/app/types/';
+import Image from 'next/image';
 
 interface ProjectsModalProps {
   isOpen: boolean;
@@ -41,7 +42,9 @@ const ProjectsModal: React.FC<ProjectsModalProps> = ({ isOpen, onClose, projects
               {projects.map((project) => (
                 <div key={project.id} className="bg-gray-100 p-4 rounded-lg shadow-md">
                   {/* Imagen del proyecto */}
-                  <img 
+                  <Image
+                    width={300}
+                    height={200} 
                     src={project.thumbnail || project.img || "/img/default-project.jpg"} 
                     alt={project.title} 
                     className="w-full h-40 object-cover rounded-md mb-3" 
