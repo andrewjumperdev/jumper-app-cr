@@ -22,24 +22,41 @@ const initialState: ReviewsState = {
   error: null,
 };
 
-export const fetchReviews = createAsyncThunk("reviews/fetchReviews", async (_, thunkAPI) => {
-  try {
-    const response = await axiosInstance.get("/reviews");
-    return response.data;
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.response?.data || error.message);
-  }
-});
+export const fetchReviews = createAsyncThunk(
+  "reviews/fetchReviews",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get("/reviews");
+      return response.data;
+    } catch (error: unknown) {
+      let errorMessage = "An unexpected error occurred";
+      
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
 
-// Async thunk para agregar un review
-export const addReview = createAsyncThunk("reviews/addReview", async (newReview: Review, thunkAPI) => {
-  try {
-    const response = await axiosInstance.post("/reviews", newReview);
-    return response.data;
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.response?.data || error.message);
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
   }
-});
+);
+
+export const addReview = createAsyncThunk(
+  "reviews/addReview",
+  async (newReview: Review, thunkAPI) => {
+    try {
+      const response = await axiosInstance.post("/reviews", newReview);
+      return response.data;
+    } catch (error: unknown) {
+      let errorMessage = "An unexpected error occurred";
+      
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
 
 const reviewSlice = createSlice({
   name: "reviews",
