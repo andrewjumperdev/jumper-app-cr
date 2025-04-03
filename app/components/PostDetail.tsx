@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Article } from '@/app/types';
 import { markdownToHtml } from '@/app/lib/markdownToHtml';
-import CommentSection from './CommentSection';
 import CommentForm from './CommentForm'; 
+import Image from 'next/image';
 
 interface PostDetailProps {
   article: Article;
@@ -53,7 +53,7 @@ const PostDetail: React.FC<PostDetailProps> = ({ article }) => {
 
       {article.imageUrl && (
         <div className="text-center mb-6">
-          <img src={article.imageUrl} alt={article.title} className="w-full h-auto max-h-60 object-cover rounded-lg" />
+          <Image width={100} height={100}  src={article.imageUrl} alt={article.title} className="w-full h-auto max-h-60 object-cover rounded-lg" />
         </div>
       )}
 

@@ -1,17 +1,20 @@
 import React, { FC } from 'react';
 import { Article } from '@/app/types';
+import Image from 'next/image';
 
 interface PostCardProps {
   article: Article;
 }
 
 const PostCard: FC<PostCardProps> = ({ article }) => {
-  const imageUrl = (article as any).imageUrl || '/placeholder-image.jpg';
+  const imageUrl = article.imageUrl || '/placeholder-image.jpg';
 
   return (
     <div className="bg-white rounded-lg shadow-md hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col">
       {imageUrl && (
-        <img
+        <Image
+          width={100}
+          height={100}
           src={imageUrl}
           alt={article.title}
           className="w-full h-48 object-cover"

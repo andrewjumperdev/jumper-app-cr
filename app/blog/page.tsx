@@ -15,10 +15,9 @@ const BlogPage: NextPage = () => {
         const res = await fetch('/api/articles');
         if (res.ok) {
           const data: Article[] = await res.json();
-          // Convertir _id a string si es un ObjectId de MongoDB
           const formattedArticles = data.map(article => ({
             ...article,
-            _id: article._id.toString(),  // Asegúrate de convertir _id a string
+            _id: article._id.toString(),
           }));
           setArticles(formattedArticles);
         } else {

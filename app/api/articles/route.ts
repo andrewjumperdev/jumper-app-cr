@@ -1,8 +1,8 @@
 import clientPromise from "@/app/lib/mongodb";
 import { Article } from "@/app/types";
 import { NextResponse } from "next/server";
-import { ObjectId } from "mongodb"; // Asegúrate de importar ObjectId
 
+// Tipo de error mejorado en los bloques catch
 export async function GET() {
   try {
     const client = await clientPromise;
@@ -20,8 +20,11 @@ export async function GET() {
     // Devolver los artículos como respuesta
     return NextResponse.json(formattedArticles, { status: 200 });
 
-  } catch (error: any) {
-    console.error("🚨 Error en el servidor:", error);
+  } catch (error: unknown) {
+    // Verificar si es un error de tipo Error
+    if (error instanceof Error) {
+      console.error("🚨 Error en el servidor:", error.message);
+    }
     return NextResponse.json({ message: "🚨 Error al obtener los artículos" }, { status: 500 });
   }
 }
@@ -67,8 +70,11 @@ export async function POST(req: Request) {
     // Devolver el artículo creado con el nuevo _id generado por MongoDB
     return NextResponse.json({ ...newArticle, _id: result.insertedId.toString() }, { status: 201 });
 
-  } catch (error: any) {
-    console.error("🚨 Error en el servidor:", error);
+  } catch (error: unknown) {
+    // Verificar si es un error de tipo Error
+    if (error instanceof Error) {
+      console.error("🚨 Error en el servidor:", error.message);
+    }
     return NextResponse.json({ message: "🚨 Error en el servidor" }, { status: 500 });
   }
 }
