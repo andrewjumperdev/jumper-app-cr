@@ -1,9 +1,15 @@
 export interface Article {
-    _id?: string
-    title: string
-    content: string
-    createdAt: Date
-  }
+  _id?: string;
+  title: string;
+  category: string;
+  imageUrl?: string;
+  summary: string;
+  content: string;
+  tags: string[];
+  status: 'draft' | 'published';
+  createdAt: Date;
+}
+
   
   export interface Comment {
     _id?: string
@@ -36,4 +42,5 @@ export interface Article {
     rating: number;
     createdAt: Date;
   };
+  
   
