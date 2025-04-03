@@ -16,7 +16,7 @@ export async function GET(req: Request, context: { params: { id: string } }) {
     }
 
     return NextResponse.json(article, { status: 200 });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ message: "Error al obtener el artículo" }, { status: 500 });
   }
 }
