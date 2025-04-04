@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, FormEvent } from 'react';
 import { NextPage } from 'next';
-import Layout from '@/app/components/Layout';
+import Layout from '../../components/Layout';
 
 const categories = ['JavaScript', 'Python', 'Inteligencia Artificial', 'Otros'];
 
