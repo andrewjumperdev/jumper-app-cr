@@ -1,42 +1,36 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation'; // Importamos `useParams` de next/navigation
-import { NextPage } from 'next';
+import { ObjectId } from 'mongodb';
+import { notFound } from 'next/navigation';
+import clientPromise from '../../lib/mongodb';
 import { Article } from '../../types';
 import PostDetail from '../../components/PostDetail';
 
-const PostDetailPage: NextPage = () => {
-  const { id } = useParams(); // Usamos `useParams` para obtener el id de la URL
-  const [article, setArticle] = useState<Article | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+interface PageProps {
+  params: { id: string }
+}
 
-  useEffect(() => {
-    if (!id) return; // Verificamos si el id está disponible
+export default async function Page({ params }: PageProps) {
+  // Forzamos a esperar los parámetros antes de acceder a ellos
+  const resolvedParams = await Promise.resolve(params);
+  const { id } = resolvedParams;
 
-    const fetchArticle = async () => {
-      try {
-        const res = await fetch(`/api/articles/${id}`);
-        if (!res.ok) {
-          throw new Error('No se pudo obtener el artículo');
-        }
-        const data: Article = await res.json();
-        setArticle(data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Error desconocido');
-      } finally {
-        setLoading(false);
-      }
-    };
+  if (!ObjectId.isValid(id)) {
+    notFound();
+  }
 
-    fetchArticle();
-  }, [id]); // Dependencia de `id`, se ejecuta cuando cambia el id
+  try {
+    const client = await clientPromise;
+    const db = client.db('blog-andrewcr');
+    const article = await db.collection('articles').findOne({ _id: new ObjectId(id) });
 
-  if (loading) return <p className="text-center text-gray-500">Cargando...</p>;
-  if (error) return <p className="text-center text-red-500">{error}</p>;
-  if (!article) return <p className="text-center text-gray-500">Artículo no encontrado</p>;
+    if (!article) {
+      notFound();
+    }
 
-  return <PostDetail article={article} />;
-};
+    const articleSerialized: Article = JSON.parse(JSON.stringify(article));
 
-export default PostDetailPage;
+    return <PostDetail article={articleSerialized} />;
+  } catch (error) {
+    console.error(error);
+    notFound();
+  }
+}

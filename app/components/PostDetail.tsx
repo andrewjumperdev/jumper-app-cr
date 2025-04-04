@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from 'react';
 import CommentForm from './CommentForm'; 
 import Image from 'next/image';
@@ -6,7 +8,8 @@ import { Article } from '../types';
 import { AppDispatch, RootState } from '../store/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { addComment, fetchCommentsByArticleId } from '../store/commentsSlice';
-
+// Importamos el selector memoizado
+import { selectCommentsByArticleId } from '../selectors/commentsSelectors';
 
 interface PostDetailProps {
   article: Article;
@@ -16,8 +19,9 @@ const PostDetail: React.FC<PostDetailProps> = ({ article }) => {
   const [contentHtml, setContentHtml] = useState<string>('');
 
   const dispatch = useDispatch<AppDispatch>();
-  const comments = useSelector(
-    (state: RootState) => state.comments.byArticleId[article._id] || []
+  // Usamos el selector memoizado, que recibe el estado y el id del artículo
+  const comments = useSelector((state: RootState) =>
+    selectCommentsByArticleId(state, article._id)
   );
 
   useEffect(() => {
@@ -29,6 +33,7 @@ const PostDetail: React.FC<PostDetailProps> = ({ article }) => {
   }, [article.content]);
 
   useEffect(() => {
+    // Si no hay comentarios, disparar la acción para obtenerlos
     if (comments.length === 0) {
       dispatch(fetchCommentsByArticleId(article._id));
     }
@@ -50,7 +55,13 @@ const PostDetail: React.FC<PostDetailProps> = ({ article }) => {
 
       {article.imageUrl && (
         <div className="text-center mb-6">
-          <Image width={600} height={600}  src={article.imageUrl} alt={article.title} className="w-full h-auto max-h-60 object-cover rounded-lg" />
+          <Image 
+            width={600} 
+            height={600}  
+            src={article.imageUrl} 
+            alt={article.title} 
+            className="w-full h-auto max-h-60 object-cover rounded-lg" 
+          />
         </div>
       )}
 
@@ -61,7 +72,6 @@ const PostDetail: React.FC<PostDetailProps> = ({ article }) => {
 
       <div className="mb-6">
         <h2 className="text-xl font-semibold text-gray-800">Contenu :</h2>
-        {/* Renderiza el contenido HTML */}
         <div className="prose text-gray-700 overflow-auto" dangerouslySetInnerHTML={{ __html: contentHtml }} />
       </div>
 
@@ -77,7 +87,8 @@ const PostDetail: React.FC<PostDetailProps> = ({ article }) => {
           </ul>
         </div>
       )}
-       <div className="mt-6">
+
+      <div className="mt-6">
         <h2 className="text-xl font-semibold text-gray-800">Commentaires:</h2>
         <div className="space-y-4 mt-4">
           {comments.map((comment, index) => (
@@ -90,6 +101,7 @@ const PostDetail: React.FC<PostDetailProps> = ({ article }) => {
           ))}
         </div>
       </div>
+
       <CommentForm articleId={article._id} onCommentAdded={handleCommentAdded} />
     </div>
   );
