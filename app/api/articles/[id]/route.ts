@@ -2,13 +2,10 @@ import { ObjectId } from 'mongodb';
 import clientPromise from '../../../lib/mongodb';
 import { NextRequest } from 'next/server';
 
-// La ruta es dinámica, así que debes usar el método correcto para obtener los params
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { id: string } }  // Obtenemos los parámetros de la URL
-) {
-  // Esperar que se resuelvan los params antes de acceder a sus propiedades
-  const { id } = await params;  // Asegurándote de que `params` esté completamente resuelto
+// La ruta es dinámica, y debemos usar el contexto para obtener los parámetros
+export async function GET(req: NextRequest, context: { params: { id: string } }) {
+  // Extraemos `id` de `params` dentro de `context`
+  const { id } = context.params;
 
   // Validación del ID
   if (!ObjectId.isValid(id)) {
