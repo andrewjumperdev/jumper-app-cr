@@ -1,9 +1,9 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { NextPage } from 'next';
-import { Article } from '@/app/types';
 import Layout from '../components/Layout';
 import PostList from '../components/PostList';
+import { Article } from '../types';
 
 const BlogPage: NextPage = () => {
   const [articles, setArticles] = useState<Article[]>([]);

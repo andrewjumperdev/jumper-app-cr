@@ -1,15 +1,39 @@
 import { NextResponse } from 'next/server';
-import clientPromise from '@/app/lib/mongodb';
+import { ObjectId } from "mongodb";
+import clientPromise from '../../../lib/mongodb';
 
-export async function GET(req: Request, { params }: { params: { articleId: string } }) {
-  const { articleId } = params;
+export async function GET(req: Request, { params }: { params: { id: string } }) {
+  // Asegúrate de acceder al parámetro después de que haya sido completamente resuelto
+  const { id } = params;
+
+  // Conexión a la base de datos
   const client = await clientPromise;
-  const db = client.db('blog-andrewcr');
+  const db = client.db("blog-andrewcr");
 
-  const comments = await db.collection('comments').find({ articleId }).toArray();
+  // Validar si el id es válido
+  if (!ObjectId.isValid(id)) {
+    return NextResponse.json({ error: "ID inválido" }, { status: 400 });
+  }
 
-  return NextResponse.json({ comments });
+  try {
+    // Buscar el artículo usando el ObjectId
+    const article = await db
+      .collection("articles")
+      .findOne({ _id: new ObjectId(id) });
+
+    // Si no se encuentra el artículo, devuelve un error 404
+    if (!article) {
+      return NextResponse.json({ message: "Artículo no encontrado" }, { status: 404 });
+    }
+
+    // Si se encuentra el artículo, lo retorna con un código 200
+    return NextResponse.json(article, { status: 200 });
+  } catch (error) {
+    console.error("Error al obtener el artículo:", error);
+    return NextResponse.json({ message: "Error al obtener el artículo" }, { status: 500 });
+  }
 }
+
 
 export async function POST(req: Request, { params }: { params: { articleId: string } }) {
   const { articleId } = params;

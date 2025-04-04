@@ -1,23 +1,39 @@
-import clientPromise from "@/app/lib/mongodb";
-import { NextResponse } from "next/server";
-import { ObjectId } from "mongodb";
+import { ObjectId } from 'mongodb';
+import clientPromise from '../../../lib/mongodb';
+import { NextRequest } from 'next/server';
 
-export async function GET(req: Request, context: any) {
-  const { id } = context.params;
-  const client = await clientPromise;
-  const db = client.db("blog-andrewcr");
+// La ruta es dinámica, así que debes usar el método correcto para obtener los params
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { id: string } }  // Obtenemos los parámetros de la URL
+) {
+  // Esperar que se resuelvan los params antes de acceder a sus propiedades
+  const { id } = await params;  // Asegurándote de que `params` esté completamente resuelto
+
+  // Validación del ID
+  if (!ObjectId.isValid(id)) {
+    return new Response('Invalid ID', { status: 400 });
+  }
 
   try {
+    // Conexión a la base de datos
+    const client = await clientPromise;
+    const db = client.db('blog-andrewcr');
+    
+    // Buscar el artículo en la base de datos
     const article = await db
-      .collection("articles")
+      .collection('articles')
       .findOne({ _id: new ObjectId(id) });
 
+    // Verificar si el artículo existe
     if (!article) {
-      return NextResponse.json({ message: "Artículo no encontrado" }, { status: 404 });
+      return new Response('Article not found', { status: 404 });
     }
 
-    return NextResponse.json(article, { status: 200 });
-  } catch {
-    return NextResponse.json({ message: "Error al obtener el artículo" }, { status: 500 });
+    // Devolver el artículo como respuesta
+    return new Response(JSON.stringify(article), { status: 200 });
+  } catch (error: any) {
+    console.error('Database connection error:', error);
+    return new Response('Database error: ' + error.message, { status: 500 });
   }
 }

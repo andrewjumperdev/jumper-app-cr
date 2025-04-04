@@ -1,5 +1,5 @@
-import clientPromise from '@/app/lib/mongodb'
 import { NextResponse } from 'next/server'
+import clientPromise from '../../lib/mongodb'
 
 export async function GET() {
   const client = await clientPromise

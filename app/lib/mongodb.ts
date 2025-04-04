@@ -1,30 +1,29 @@
-/* eslint-disable no-var */
+import { MongoClient } from "mongodb";
+
 declare global {
   var _mongoClientPromise: Promise<MongoClient> | undefined;
 }
-/* eslint-enable no-var */
-
-import { MongoClient } from "mongodb";
 
 const uri = process.env.MONGODB_URI;
-if (!uri) throw new Error("⚠️ No se encontró MONGODB_URI en .env.local");
+if (!uri) throw new Error("MONGODB_URI no definida");
 
-const options = {};
-let client: MongoClient;
+const options = {
+  maxPoolSize: 10,
+  serverSelectionTimeoutMS: 5000,
+  socketTimeoutMS: 45000,
+};
+
 let clientPromise: Promise<MongoClient>;
 
 if (process.env.NODE_ENV === "development") {
-  if (!globalThis._mongoClientPromise) {
-    console.log("📡 Conectando a MongoDB...");
-    client = new MongoClient(uri, options);
-    globalThis._mongoClientPromise = client.connect();
+  if (!global._mongoClientPromise) {
+    console.log("🔥 Nueva conexión MongoDB (desarrollo)");
+    global._mongoClientPromise = new MongoClient(uri, options).connect();
   }
-  clientPromise = globalThis._mongoClientPromise;
+  clientPromise = global._mongoClientPromise;
 } else {
-  console.log("🚀 Conectando a MongoDB en producción...");
-  client = new MongoClient(uri, options);
-  clientPromise = client.connect();
+  console.log("🚀 Conexión MongoDB (producción)");
+  clientPromise = new MongoClient(uri, options).connect();
 }
 
 export default clientPromise;
-

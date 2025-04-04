@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Article } from '@/app/types';
-import { markdownToHtml } from '@/app/lib/markdownToHtml';
 import CommentForm from './CommentForm'; 
 import Image from 'next/image';
+import { markdownToHtml } from '../lib/markdownToHtml';
+import { Article } from '../types';
+import { AppDispatch, RootState } from '../store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { addComment, fetchCommentsByArticleId } from '../store/commentsSlice';
+
 
 interface PostDetailProps {
   article: Article;
@@ -10,36 +14,29 @@ interface PostDetailProps {
 
 const PostDetail: React.FC<PostDetailProps> = ({ article }) => {
   const [contentHtml, setContentHtml] = useState<string>('');
-  const [comments, setComments] = useState<Comment[]>([]);
+
+  const dispatch = useDispatch<AppDispatch>();
+  const comments = useSelector(
+    (state: RootState) => state.comments.byArticleId[article._id] || []
+  );
 
   useEffect(() => {
     const convertMarkdown = async () => {
       const htmlContent = await markdownToHtml(article.content);
       setContentHtml(htmlContent);
     };
-
     convertMarkdown();
   }, [article.content]);
 
-  const handleCommentAdded = (comment: Comment) => {
-    setComments([...comments, comment]);
-  };
-
   useEffect(() => {
-    const fetchComments = async () => {
-      try {
-        const res = await fetch(`/api/comments/${article._id}`);
-        if (res.ok) {
-          const data = await res.json();
-          setComments(data.comments);
-        }
-      } catch (err) {
-        console.error('Error al obtener los comentarios:', err);
-      }
-    };
+    if (comments.length === 0) {
+      dispatch(fetchCommentsByArticleId(article._id));
+    }
+  }, [article._id, comments.length, dispatch]);
 
-    fetchComments();
-  }, [article._id]);
+  const handleCommentAdded = (comment: Comment) => {
+    dispatch(addComment({ articleId: article._id, comment }));
+  };
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-gray-50 shadow-lg rounded-lg overflow-hidden">
@@ -53,7 +50,7 @@ const PostDetail: React.FC<PostDetailProps> = ({ article }) => {
 
       {article.imageUrl && (
         <div className="text-center mb-6">
-          <Image width={100} height={100}  src={article.imageUrl} alt={article.title} className="w-full h-auto max-h-60 object-cover rounded-lg" />
+          <Image width={600} height={600}  src={article.imageUrl} alt={article.title} className="w-full h-auto max-h-60 object-cover rounded-lg" />
         </div>
       )}
 
@@ -93,7 +90,7 @@ const PostDetail: React.FC<PostDetailProps> = ({ article }) => {
           ))}
         </div>
       </div>
-       <CommentForm articleId={article._id} onCommentAdded={handleCommentAdded} />
+      <CommentForm articleId={article._id} onCommentAdded={handleCommentAdded} />
     </div>
   );
 };

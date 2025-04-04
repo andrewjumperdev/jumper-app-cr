@@ -1,6 +1,7 @@
-import clientPromise from "@/app/lib/mongodb";
-import { Article } from "@/app/types";
+
 import { NextResponse } from "next/server";
+import clientPromise from "../../lib/mongodb";
+import { Article } from "../../types";
 
 // Tipo de error mejorado en los bloques catch
 export async function GET() {

@@ -1,16 +1,31 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+// .eslintrc.config.js
+import next from "@next/eslint-plugin-next";
+import typescriptESLint from "@typescript-eslint/eslint-plugin";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+export default [
+  {
+    // Configuración principal para Next.js
+    plugins: {
+      "@next/next": next,
+      "@typescript-eslint": typescriptESLint,
+    },
+    rules: {
+      ...next.configs.recommended.rules,
+      ...next.configs["core-web-vitals"].rules,
+      // Reglas personalizadas adicionales
+      "react-hooks/exhaustive-deps": "error",
+    },
+    languageOptions: {
+      parser: "@typescript-eslint/parser",
+      parserOptions: {
+        project: "./tsconfig.json",
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    settings: {
+      next: {
+        rootDir: import.meta.dirname,
+      },
+    },
+  },
 ];
-
-export default eslintConfig;

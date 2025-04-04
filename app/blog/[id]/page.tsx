@@ -1,18 +1,18 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useParams } from 'next/navigation'; // Importamos `useParams` de next/navigation
 import { NextPage } from 'next';
-import { Article } from '@/app/types';
-import PostDetail from '@/app/components/PostDetail';
+import { Article } from '../../types';
+import PostDetail from '../../components/PostDetail';
 
 const PostDetailPage: NextPage = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // Usamos `useParams` para obtener el id de la URL
   const [article, setArticle] = useState<Article | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    if (!id) return;
+    if (!id) return; // Verificamos si el id está disponible
 
     const fetchArticle = async () => {
       try {
@@ -30,7 +30,7 @@ const PostDetailPage: NextPage = () => {
     };
 
     fetchArticle();
-  }, [id]);
+  }, [id]); // Dependencia de `id`, se ejecuta cuando cambia el id
 
   if (loading) return <p className="text-center text-gray-500">Cargando...</p>;
   if (error) return <p className="text-center text-red-500">{error}</p>;
