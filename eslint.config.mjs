@@ -1,5 +1,11 @@
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 import next from "@next/eslint-plugin-next";
 import typescriptESLint from "@typescript-eslint/eslint-plugin";
+
+// Definir __dirname en módulos ES
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export default [
   {
