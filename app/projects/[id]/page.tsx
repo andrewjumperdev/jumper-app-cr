@@ -3,10 +3,10 @@ import React, { JSX } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { projects } from '@/app/api/db/projects';
-import type { Project } from '@/app/types/index';
 import { SiJavascript, SiNextdotjs, SiReact, SiTailwindcss, SiStripe, SiExpress, SiMocha, SiHtml5, SiCss3, SiShopify, SiPython, SiPandas, SiNumpy, SiFlask, SiSass,  } from 'react-icons/si';
 import { FaUserShield } from 'react-icons/fa';
+import { projects } from '../../api/db/projects';
+import { Project } from '../../types';
 
 interface PageProps {
   params: Promise<{ id: string }>;

@@ -4,10 +4,11 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaStar, FaChevronDown } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, AppDispatch } from "@/app/store/store";
-import { fetchReviews, addReview, Review } from "@/app/store/reviewSlice";
+
 import Modal from "../components/Modal";
 import Image from "next/image";
+import { AppDispatch, RootState } from "../store/store";
+import { addReview, fetchReviews, Review } from "../store/reviewSlice";
 
 const ServicesPage = () => {
   const dispatch = useDispatch<AppDispatch>();

@@ -1,7 +1,7 @@
-import clientPromise from '@/app/lib/mongodb'
 import { NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import clientPromise from '../../lib/mongodb'
 
 export async function POST(req: Request) {
   const client = await clientPromise

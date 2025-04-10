@@ -2,8 +2,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import ProjectsModal from "./ProjectsModal";
-import { projects } from "@/app/api/db/projects";
-import { Project } from "@/app/types/";
+import { Project } from "../types";
+import { projects } from "../api/db/projects";
+
 
 const HeroSection: React.FC = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);

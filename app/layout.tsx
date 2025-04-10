@@ -53,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="robots" content="index, follow" />
         <meta name="theme-color" content="#1E293B" />
         <link rel="icon" href="/img/logo-jumper.png" />
+        <meta name="google-adsense-account" content="ca-pub-5864327417374034"></meta>
       </head>
 
       <body className="expansion-alids-init">
