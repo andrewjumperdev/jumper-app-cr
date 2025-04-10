@@ -2,8 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { NextPage } from 'next';
-import { Article } from '@/app/types';
-import PostDetail from '@/app/components/PostDetail';
+import { Article } from '../../types';
+import PostDetail from '../../components/PostDetail';
+
 
 const PostDetailPage: NextPage = () => {
   const { id } = useParams();

@@ -1,9 +1,9 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { Article, Comment } from '@/app/types';
-import { markdownToHtml } from '@/app/lib/markdownToHtml';
 import CommentForm from './CommentForm';
 import Image from 'next/image';
+import { Article } from '../types';
+import { markdownToHtml } from '../lib/markdownToHtml';
 
 interface PostDetailProps {
   article: Article;
