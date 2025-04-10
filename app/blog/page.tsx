@@ -17,7 +17,7 @@ const BlogPage: NextPage = () => {
           const data: Article[] = await res.json();
           const formattedArticles = data.map(article => ({
             ...article,
-            _id: article._id.toString(),
+            _id: article._id?.toString() ?? '',
           }));
           setArticles(formattedArticles);
         } else {

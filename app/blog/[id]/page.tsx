@@ -12,7 +12,13 @@ const PostDetailPage: NextPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    if (!id) return;
+    console.log("ID desde useParams:", id);
+    if (!id) {
+      console.error("No se encontró id en la URL");
+      setError("ID no proporcionado");
+      setLoading(false);
+      return;
+    }
 
     const fetchArticle = async () => {
       try {
@@ -21,6 +27,10 @@ const PostDetailPage: NextPage = () => {
           throw new Error('No se pudo obtener el artículo');
         }
         const data: Article = await res.json();
+        console.log("Artículo cargado:", data);
+        if (!data._id) {
+          throw new Error('El artículo no tiene un _id válido');
+        }
         setArticle(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Error desconocido');

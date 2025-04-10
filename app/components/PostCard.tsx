@@ -13,8 +13,8 @@ const PostCard: FC<PostCardProps> = ({ article }) => {
     <div className="bg-white rounded-lg shadow-md hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col">
       {imageUrl && (
         <Image
-          width={100}
-          height={100}
+          width={500}
+          height={500}
           src={imageUrl}
           alt={article.title}
           className="w-full h-48 object-cover"

@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface Article {
   _id?: string;
   title: string;
@@ -12,6 +14,7 @@ export interface Article {
 
   
   export interface Comment {
+    text: ReactNode;
     _id?: string
     articleId: string
     author: string

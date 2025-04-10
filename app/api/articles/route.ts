@@ -35,7 +35,7 @@ export async function POST(req: Request) {
     const db = client.db("blog-andrewcr");
 
     const body = await req.json();
-    const { title, category, imageUrl, summary, content, tags, status }: Article = body;
+    const { title, category, imageUrl, summary, content, tags, status }: { title: string; category: string; imageUrl?: string; summary: string; content: string; tags?: string | string[]; status: string } = body;
 
     // Verificar que los datos obligatorios estén presentes
     if (!title || !category || !summary || !content || !status) {
