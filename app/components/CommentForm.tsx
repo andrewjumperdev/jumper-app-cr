@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
-import { Comment } from '@/app/types';
+import { Comment } from '../types';
+
 
 interface CommentFormProps {
   articleId: string;
