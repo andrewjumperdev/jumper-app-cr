@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { Article } from '@/app/types';
 import PostCard from './PostCard';
+import { Article } from '../types';
 
 interface PostListProps {
   articles: Article[];

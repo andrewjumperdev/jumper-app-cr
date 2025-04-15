@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import CommentForm from './CommentForm';
 import Image from 'next/image';
-import { Article } from '../types';
+import { Article, Comment  } from '../types';
 import { markdownToHtml } from '../lib/markdownToHtml';
 
 interface PostDetailProps {

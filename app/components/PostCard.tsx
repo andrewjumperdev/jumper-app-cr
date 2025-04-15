@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { Article } from '@/app/types';
 import Image from 'next/image';
+import { Article } from '../types';
 
 interface PostCardProps {
   article: Article;

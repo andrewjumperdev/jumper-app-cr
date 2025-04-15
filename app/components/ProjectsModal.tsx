@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Project } from '@/app/types/';
 import Image from 'next/image';
+import { Project } from '../types';
 
 interface ProjectsModalProps {
   isOpen: boolean;

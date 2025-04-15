@@ -19,7 +19,7 @@ export interface Article {
     articleId: string
     author: string
     message: string
-    createdAt: Date
+    createdAt: string | Date
   }
 
   export interface TechnicalDetail {
