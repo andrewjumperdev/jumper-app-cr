@@ -1,12 +1,14 @@
 import { NextResponse } from 'next/server';
 import clientPromise from '../../../lib/mongodb';
 
+export async function GET(req: Request) {
+  const url = new URL(req.url);
+  const articleId = url.pathname.split('/').pop();
 
-export async function GET(req: Request, { params }: { params: { articleId: string } }) {
-  const { articleId } = params;
   if (!articleId || articleId === 'undefined') {
     return NextResponse.json({ error: 'articleId es requerido' }, { status: 400 });
   }
+
   try {
     const client = await clientPromise;
     const db = client.db('blog-andrewcr');
@@ -18,20 +20,25 @@ export async function GET(req: Request, { params }: { params: { articleId: strin
   }
 }
 
-export async function POST(req: Request, { params }: { params: { articleId: string } }) {
-  const { articleId } = params;
+export async function POST(req: Request, context: { params: { articleId: string } }) {
+  const articleId = context?.params?.articleId;
+
   if (!articleId || articleId === 'undefined') {
     return NextResponse.json({ error: 'articleId es requerido' }, { status: 400 });
   }
+
   const { text, createdAt, email } = await req.json();
+
   if (!text || !createdAt) {
     return NextResponse.json({ error: 'Faltan datos en el comentario' }, { status: 400 });
   }
+
   try {
     const client = await clientPromise;
     const db = client.db('blog-andrewcr');
     const newComment = { text, articleId, email, createdAt: new Date(createdAt) };
     const result = await db.collection('comments').insertOne(newComment);
+
     return NextResponse.json({
       message: 'Comentario agregado correctamente',
       comment: { ...newComment, _id: result.insertedId },
