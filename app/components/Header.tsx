@@ -7,7 +7,7 @@ import ParticlesBackground from "./ParticlesBackground";
 
 const Header = () => {
   return (
-    <header className="h-dvh container mx-auto px-4 md:px-8 pb-5 flex items-center">
+    <header className="h-dvh container mt-20 mx-auto px-4 md:px-8 pb-5 flex items-center">
       <ParticlesBackground />
       <div className="w-full bg-transparent max-w-[1280px] z-20 mt-20 flex flex-col md:flex-row items-center md:justify-between gap-6">
         <motion.div

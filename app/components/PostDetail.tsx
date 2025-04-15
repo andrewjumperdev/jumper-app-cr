@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import CommentForm from './CommentForm';
 import Image from 'next/image';
 import { Article, Comment  } from '../types';
+import ShareButtons from '../components/ShareBottons'; // Corrected import path for ShareButtons component
 import { markdownToHtml } from '../lib/markdownToHtml';
 
 interface PostDetailProps {
@@ -83,12 +84,12 @@ const PostDetail: React.FC<PostDetailProps> = ({ article }) => {
         <h2 className="text-xl font-semibold text-gray-800">Résumé :</h2>
         <p className="text-gray-700">{article.summary}</p>
       </div>
-
+      
       <div className="mb-6">
         <h2 className="text-xl font-semibold text-gray-800">Contenu :</h2>
         <div className="prose text-gray-700 overflow-auto" dangerouslySetInnerHTML={{ __html: contentHtml }} />
       </div>
-
+      <ShareButtons article={article} />
       {article.tags && article.tags.length > 0 && (
         <div className="mb-6 mt-28">
           <h2 className="text-xl font-semibold text-gray-800">Étiquettes :</h2>

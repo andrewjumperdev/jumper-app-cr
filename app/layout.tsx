@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import ReduxProvider from "./components/ReduxProvider";
 import Footer from "./components/Footer";
+import Script from "next/script";
 
 
 export const metadata: Metadata = {
@@ -54,6 +55,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" content="#1E293B" />
         <link rel="icon" href="/img/logo-jumper.png" />
         <meta name="google-adsense-account" content="ca-pub-5864327417374034"></meta>
+        <Script
+          id="adsense-init"
+          async
+          strategy="afterInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5864327417374034"
+          crossOrigin="anonymous"
+        />
       </head>
 
       <body className="expansion-alids-init">
