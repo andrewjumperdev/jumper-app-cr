@@ -106,7 +106,39 @@ export const projects = [
     ],
   },
   {
-    id: 3,
+    "id": 3,
+    "title": "Bot de Trading Automatisé",
+    "img": "/img/Portada-Traiding.png",
+    "description": "Ce bot de trading automatisé détecte les opportunités d'entrée en analysant les tendances du marché, calcule les points de gains et de pertes afin de gérer des micro-comptes avec une rentabilité attendue de 8 à 12 %. Connecté à MetaTrader5, il exécute les ordres avec précision et utilise un trailing stop pour minimiser les pertes. De plus, il intègre une base de données qui enregistre un journal détaillé de chaque opération, permettant une analyse technique approfondie pour ajuster et améliorer la stratégie. Il dispose également d'une interface frontend simple qui permet à l'utilisateur de se connecter, d'activer le bot, de surveiller les opérations en temps réel et de gérer les lots, ouvrant la possibilité d'évoluer vers un système de copy trading à l'avenir.",
+    "thumbnail": "/img/Portada-Traiding.png",
+    "urlProject": "https://github.com/andrewjumperdev/BotTraiding",
+    "repository": "https://github.com/andrewjumperdev/BotTraiding",
+    "mainTools": ["python", "MetaTrader5", "pandas", "numpy", "flask"],
+    "technicalDetails": [
+      {
+        "title": "Connexion avec MetaTrader5",
+        "description": "Utilise l'API MetaTrader5 pour se connecter au broker, envoyer des ordres d'achat/vente et gérer les opérations de manière automatisée."
+      },
+      {
+        "title": "Stratégie de Trading",
+        "description": "Implémente une stratégie basée sur l'analyse des tendances, la détection des points d'entrée et l'utilisation d'un trailing stop pour réduire les pertes et maximiser la rentabilité."
+      },
+      {
+        "title": "Gestion des Micro-Comptes",
+        "description": "Optimise la gestion des micro-comptes grâce au calcul dynamique des lots, garantissant une rentabilité constante entre 8 et 12 %."
+      },
+      {
+        "title": "Enregistrement et Analyse des Opérations",
+        "description": "Intègre une base de données qui stocke un journal détaillé de chaque opération, facilitant l'analyse technique et l'ajustement des stratégies."
+      },
+      {
+        "title": "Interface Frontend",
+        "description": "Dispose d'une interface web simple développée avec Flask, permettant aux utilisateurs de se connecter, d'activer le bot, de surveiller les opérations et d'ajuster les paramètres en temps réel."
+      }
+    ]
+  },
+  {
+    id: 4,
     img: "/img/Portada-Kanap.png",
     title: "Site e-commerce Kanap",
     description: `L’application web est composée de 4 pages : Une page d’accueil montrant (de manière dynamique) tous les articles disponibles à
@@ -162,7 +194,7 @@ export const projects = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     title: "Piiquante API",
     img: "/img/Portada-Piiquante.png",
     description: `Piiquante est une application web dédiée à la création de sauces épicées avec des recettes secrètes. Son objectif est de générer plus de buzz en permettant aux utilisateurs d'ajouter leurs sauces préférées et de liker ou disliker les sauces ajoutées par d'autres. L'application propose des fonctionnalités telles que l'authentification des utilisateurs, la visualisation des sauces existantes, l'ajout de nouvelles sauces avec des images, la mise à jour des sauces existantes, ainsi que la possibilité de liker et disliker les sauces. Les mots de passe des utilisateurs sont sécurisés grâce à un hachage, et l'accès aux routes de sauce requiert une authentification appropriée. Les adresses électroniques sont uniques pour assurer l'unicité des utilisateurs, et les erreurs de base de données sont gérées grâce à un plugin Mongoose. Le projet est sous licence MIT, encourage les contributions et respecte les normes de sécurité actuelles.`,
@@ -192,7 +224,7 @@ export const projects = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     title: "Kasa React Project",
     img: "/img/Portada-Kasa.png",
     description: `Create React App: Le projet doit être créé en utilisant Create React App, un outil qui facilite la configuration initiale d'une application React.
@@ -249,7 +281,7 @@ export const projects = [
     ],
   },
   {
-    id: 6,
+    id: 7,
     img: "/img/Portada-Python.png",
     title: "Web Scrapper",
     description: `Ce projet consiste en un script Python pour effectuer le web scraping d'un site web donné. L'objectif est de récupérer tous les liens présents sur une page spécifique du site, de les valider et de générer un rapport des liens invalides. Pour cela, nous utilisons les bibliothèques BeautifulSoup, requests, pandas, numpy et yagmail.
@@ -286,37 +318,6 @@ export const projects = [
       },
     ],
   },
-  {
-    "id": 7,
-    "title": "Bot de Trading Automatisé",
-    "img": "/img/Portada-Traiding.png",
-    "description": "Ce bot de trading automatisé détecte les opportunités d'entrée en analysant les tendances du marché, calcule les points de gains et de pertes afin de gérer des micro-comptes avec une rentabilité attendue de 8 à 12 %. Connecté à MetaTrader5, il exécute les ordres avec précision et utilise un trailing stop pour minimiser les pertes. De plus, il intègre une base de données qui enregistre un journal détaillé de chaque opération, permettant une analyse technique approfondie pour ajuster et améliorer la stratégie. Il dispose également d'une interface frontend simple qui permet à l'utilisateur de se connecter, d'activer le bot, de surveiller les opérations en temps réel et de gérer les lots, ouvrant la possibilité d'évoluer vers un système de copy trading à l'avenir.",
-    "thumbnail": "/img/Portada-Traiding.png",
-    "urlProject": "https://github.com/andrewjumperdev/BotTraiding",
-    "repository": "https://github.com/andrewjumperdev/BotTraiding",
-    "mainTools": ["python", "MetaTrader5", "pandas", "numpy", "flask"],
-    "technicalDetails": [
-      {
-        "title": "Connexion avec MetaTrader5",
-        "description": "Utilise l'API MetaTrader5 pour se connecter au broker, envoyer des ordres d'achat/vente et gérer les opérations de manière automatisée."
-      },
-      {
-        "title": "Stratégie de Trading",
-        "description": "Implémente une stratégie basée sur l'analyse des tendances, la détection des points d'entrée et l'utilisation d'un trailing stop pour réduire les pertes et maximiser la rentabilité."
-      },
-      {
-        "title": "Gestion des Micro-Comptes",
-        "description": "Optimise la gestion des micro-comptes grâce au calcul dynamique des lots, garantissant une rentabilité constante entre 8 et 12 %."
-      },
-      {
-        "title": "Enregistrement et Analyse des Opérations",
-        "description": "Intègre une base de données qui stocke un journal détaillé de chaque opération, facilitant l'analyse technique et l'ajustement des stratégies."
-      },
-      {
-        "title": "Interface Frontend",
-        "description": "Dispose d'une interface web simple développée avec Flask, permettant aux utilisateurs de se connecter, d'activer le bot, de surveiller les opérations et d'ajuster les paramètres en temps réel."
-      }
-    ]
-  }
+ 
   
 ];
