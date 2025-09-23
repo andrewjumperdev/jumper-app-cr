@@ -57,7 +57,7 @@ export default function RootLayout({
         <meta name="robots" content="index, follow" />
         <meta name="theme-color" content="#1E293B" />
         <link rel="icon" href="/img/logo-jumper.png" />
-        <meta
+        {/* <meta
           name="google-adsense-account"
           content="ca-pub-5864327417374034"
         ></meta>
@@ -67,7 +67,7 @@ export default function RootLayout({
           strategy="afterInteractive"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5864327417374034"
           crossOrigin="anonymous"
-        />
+        /> */}
       </head>
 
       <body className="expansion-alids-init">
