@@ -9,8 +9,8 @@ export const projects = [
   
   La sécurité occupe une place centrale : l'intégration de Next-Auth assure une authentification robuste, tandis que Stripe garantit des transactions financières sécurisées et rapides. Grâce à son architecture modulaire et scalable, Samanjo App s'adapte facilement aux évolutions du marché B2B et aux besoins spécifiques des entreprises, offrant ainsi une solution complète et évolutive pour optimiser les opérations commerciales.`,
     thumbnail: "/img/logo-samanjo.png",
-    urlProject: "https://github.com/YourGitHubUsername/SamanjoApp",
-    repository: "https://github.com/YourGitHubUsername/SamanjoApp",
+    urlProject: "https://samanjointernacional.com/",
+    repository: "https://github.com/andrewjumperdev/samanjo",
     mainTools: [
       "javascript",
       "nextjs",

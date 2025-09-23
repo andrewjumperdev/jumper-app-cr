@@ -78,36 +78,35 @@ const ServicesPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
-          <p className="text-xl text-center text-gray-300 mb-8 max-w-3xl mx-auto">
-            Vous êtes à la recherche d&apos;un expert passionné pour créer des
-            solutions de software sur mesure ? 🚀 Je suis Développeur Fullstack
-            avec une expertise en{" "}
-            <strong>Next.js, React, TypeScript, Node.js</strong>, et plus
-            encore. Que vous ayez un projet d&apos;application web ou que vous ayez
-            besoin de formation pour vous perfectionner, je suis là pour vous
-            accompagner à chaque étape.
-          </p>
-
-          <p className="text-lg text-center text-gray-300 mb-12 max-w-3xl mx-auto">
-            Ensemble, nous pouvons donner vie à vos idées et créer des projets
-            qui se distinguent par leur performance et leur impact. Vous méritez
-            un service exceptionnel, à la hauteur de vos ambitions. 🌟
-          </p>
+<p className="text-xl text-center text-gray-300 mb-8 max-w-3xl mx-auto">
+  Vous êtes à la recherche d&apos;un expert passionné pour créer des solutions de software sur mesure ? 🚀 
+  Je suis Développeur Fullstack avec expertise en <strong>Next.js, React, TypeScript, Node.js</strong>, et plus encore. 
+  Chez <Link 
+      href="https://jumperenterprise.com" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="text-blue-400 font-semibold hover:underline"
+    >
+      Jumper Enterprise
+    </Link>, 
+  nous concevons des solutions automatisées et innovantes pour entreprises et startups, 
+  transformant vos idées en projets performants et évolutifs.
+</p>
 
           <div className="flex justify-center mb-10">
             <Link
-              href="https://calendly.com/aacpariscr/tutoria"
+              href="https://jumperenterprise.com"
               className="bg-blue-600 text-white font-bold px-8 py-4 rounded-lg shadow-md hover:bg-blue-700 transition-all transform hover:scale-105"
               target="_blank"
-              rel="noopener noreferrer" 
+              rel="noopener noreferrer"
             >
-              **Réservez un cours personnalisé**
+              Découvrir Jumper Enterprise 🚀
             </Link>
           </div>
 
           <div className="flex justify-center mb-10">
             <Link
-              href="mailto:contact@votreemail.com"
+              href="mailto:andrew@jumperenterprise.com"
               className="bg-gray-800 text-white font-bold px-8 py-4 rounded-lg shadow-md hover:bg-gray-700 transition-all transform hover:scale-105"
             >
               **Discutons de votre projet freelance**

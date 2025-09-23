@@ -5,7 +5,6 @@ import ReduxProvider from "./components/ReduxProvider";
 import Footer from "./components/Footer";
 import Script from "next/script";
 
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://andrewcr.com"),
   title: "Andrewcr.com - Développeur Fullstack et Consultant Technologique",
@@ -44,7 +43,11 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="fr">
       <head>
@@ -54,7 +57,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="robots" content="index, follow" />
         <meta name="theme-color" content="#1E293B" />
         <link rel="icon" href="/img/logo-jumper.png" />
-        <meta name="google-adsense-account" content="ca-pub-5864327417374034"></meta>
+        <meta
+          name="google-adsense-account"
+          content="ca-pub-5864327417374034"
+        ></meta>
         <Script
           id="adsense-init"
           async
@@ -72,6 +78,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </ReduxProvider>
           <Footer />
         </div>
+        <Script
+          id="jsonld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Andrew CR",
+              url: "https://andrewcr.com",
+              sameAs: [
+                "https://www.linkedin.com/in/andrewcr",
+                "https://github.com/andrewjumperdev",
+              ],
+            }),
+          }}
+        />
       </body>
     </html>
   );
