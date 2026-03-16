@@ -4,60 +4,94 @@ import { motion } from "framer-motion";
 import ProjectsModal from "./ProjectsModal";
 import { Project } from "../types";
 import { projects } from "../api/db/projects";
+import { useLang } from "../context/LanguageContext";
+import Link from "next/link";
 
 const HeroSection: React.FC = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
+  const { t } = useLang();
 
-  // Proyectos destacados
   const importantProjects: Project[] = projects.filter(
-    (project: Project) => [0, 2, 7].includes(project.id)
+    (project: Project) => [0, 1, 2].includes(project.id)
   );
+
+  const highlights = [
+    { icon: "⚡", label: "React & Next.js" },
+    { icon: "🤖", label: "AI Agents & n8n" },
+    { icon: "🔒", label: "Deno & TypeScript" },
+    { icon: "🚀", label: "Stripe & Payments" },
+  ];
 
   return (
     <section
-      className="relative h-[30rem] mt-20 flex items-center justify-center bg-cover bg-center"
+      className="relative min-h-[28rem] flex items-center justify-center bg-cover bg-center overflow-hidden"
       style={{
         backgroundImage: "url('/img/header-img/hero-background.png')",
         backgroundAttachment: "fixed",
       }}
     >
-      {/* Overlay oscuro para contraste y legibilidad */}
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/90" />
 
-      {/* Contenido central */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        className="relative z-10 text-center text-white px-6 md:px-12"
-      >
-        {/* Título SEO optimizado */}
-        <h1 className="text-4xl sm:text-6xl font-extrabold leading-tight tracking-wide mb-4">
-          Je crée des <span className="text-blue-500">expériences web incroyables</span> 🚀
-        </h1>
-
-        {/* Subtítulo con keywords */}
-        <p className="text-lg sm:text-xl font-light max-w-2xl mx-auto mb-8">
-          Développeur <strong className="font-medium">Full-stack</strong> spécialisé en{" "}
-          <strong className="font-medium">React</strong>, <strong className="font-medium">Next.js</strong> et{" "}
-          <strong className="font-medium">TypeScript</strong>. Je conçois des applications modernes, performantes et évolutives pour entreprises et startups.
-        </p>
-
-        {/* CTA reforzado */}
-        <motion.button
-          onClick={() => setModalOpen(true)}
-          className="inline-block bg-blue-600 text-lg font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-blue-700 transition-all"
-          whileHover={{ scale: 1.1, boxShadow: "0px 0px 20px rgba(0, 123, 255, 0.6)" }}
-          whileTap={{ scale: 0.95 }}
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 py-16 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
         >
-          Voir mes projets 🚀
-        </motion.button>
-      </motion.div>
+          {/* Tag */}
+          <span className="inline-block text-xs sm:text-sm font-semibold text-blue-400 border border-blue-500/40 bg-blue-500/10 px-4 py-1.5 rounded-full mb-6">
+            Jumper Enterprise · Founder & CEO
+          </span>
 
-      {/* Modal de proyectos */}
-      <ProjectsModal 
-        isOpen={isModalOpen} 
-        onClose={() => setModalOpen(false)} 
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-white mb-6">
+            {t("hero.title1")}{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+              {t("hero.title2")}
+            </span>
+          </h2>
+
+          <p className="text-sm sm:text-lg text-gray-300 max-w-2xl mx-auto mb-10">
+            {t("hero.subtitle")}
+          </p>
+
+          {/* Highlights */}
+          <div className="flex flex-wrap justify-center gap-3 mb-10">
+            {highlights.map(({ icon, label }) => (
+              <span
+                key={label}
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 border border-white/15 text-gray-200 text-xs sm:text-sm rounded-lg backdrop-blur-sm"
+              >
+                <span>{icon}</span>
+                {label}
+              </span>
+            ))}
+          </div>
+
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <motion.button
+              onClick={() => setModalOpen(true)}
+              className="px-8 py-3.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 hover:opacity-90 transition-all text-sm sm:text-base"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              {t("hero.cta")} 🚀
+            </motion.button>
+            <Link
+              href="/contact"
+              className="px-8 py-3.5 bg-white/10 border border-white/20 text-white font-bold rounded-xl hover:bg-white/20 transition-all text-sm sm:text-base backdrop-blur-sm"
+            >
+              {t("nav.contact")}
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+
+      <ProjectsModal
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
         projects={importantProjects}
       />
     </section>

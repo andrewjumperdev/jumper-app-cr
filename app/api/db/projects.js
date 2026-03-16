@@ -1,5 +1,35 @@
 export const projects = [
   {
+    id: 8,
+    img: "/img/jumper-enterprise.png",
+    title: "Jumper Enterprise – AI Solutions",
+    description: `Jumper Enterprise est une startup fondée et dirigée par Andrew Alfaro, spécialisée dans l'automatisation des ventes, du marketing, du support client et des opérations grâce à l'intelligence artificielle. La plateforme propose des agents intelligents capables de gérer automatiquement les commandes, clients, rendez-vous et contenu, permettant aux entreprises de fonctionner 24/7 sans intervention humaine.
+
+Les agents développés incluent : Agente Ventas Pro (gestion des ventes et opportunités), Agente Google Reviews (gestion automatique des avis en ligne), Agente Citas (organisation de rendez-vous et relances clients), Blog SEO (création de contenu optimisé), Agente Secretario (gestion des emails et agendas), Manager E-Commerce Shopify et Agente Email Scrapper & Icebreaker AI.`,
+    thumbnail: "/img/jumper-enterprise.png",
+    urlProject: "https://jumperenterprise.com",
+    repository: "",
+    mainTools: ["react", "nextjs", "tailwindcss", "n8n", "python", "openai", "make"],
+    technicalDetails: [
+      {
+        title: "Agente Ventas Pro",
+        description: "Agent IA pour la gestion des ventes, suivi des opportunités et relance automatique des prospects.",
+      },
+      {
+        title: "Agente Google Reviews",
+        description: "Automatisation de la gestion et réponse aux avis Google My Business pour renforcer la réputation en ligne.",
+      },
+      {
+        title: "Agente Citas",
+        description: "Organisation automatique des rendez-vous, confirmation et relances clients par email/WhatsApp.",
+      },
+      {
+        title: "Blog SEO & Manager E-Commerce",
+        description: "Création de contenu SEO optimisé et gestion automatisée du catalogue e-commerce Shopify.",
+      },
+    ],
+  },
+  {
     id: 0,
     img: "/img/header-img/samanjo-wallpaper.png",
     title: "Samanjo App",

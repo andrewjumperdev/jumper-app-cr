@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import ReduxProvider from "./components/ReduxProvider";
 import Footer from "./components/Footer";
 import Script from "next/script";
+import { LanguageProvider } from "./context/LanguageContext";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://andrewcr.com"),
@@ -71,13 +72,15 @@ export default function RootLayout({
       </head>
 
       <body className="expansion-alids-init">
-        <div className="flex flex-col min-h-screen">
-          <Navbar />
-          <ReduxProvider>
-            <main className="flex-grow bg-gray-900">{children}</main>
-          </ReduxProvider>
-          <Footer />
-        </div>
+        <LanguageProvider>
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <ReduxProvider>
+              <main className="flex-grow bg-gray-900">{children}</main>
+            </ReduxProvider>
+            <Footer />
+          </div>
+        </LanguageProvider>
         <Script
           id="jsonld"
           type="application/ld+json"
